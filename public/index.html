@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="A little collection of the city after dark. Turn a mirror ball. Find a night worth staying in.">
+  <title>Disco Ball</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="assets/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" as="image" href="assets/night-previews.webp">
+</head>
+<body class="cover-loading">
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <canvas id="world" tabindex="-1" aria-label="An interactive mirror ball. Drag to spin or tilt, use left and right arrows to choose a reflection, and press Enter to step into the night."></canvas>
+  <canvas id="glints" aria-hidden="true"></canvas>
+
+  <main id="cover" inert>
+    <section class="cover-title" aria-labelledby="main-title">
+      <h1 id="main-title">One ball, <em>100 nights.</em></h1>
+    </section>
+    <div class="bottom-area">
+      <div class="night-selector" aria-label="Choose a night">
+        <!-- Mingcute Core Regular chevrons. See assets/mingcute-license.txt. -->
+        <button class="arrow-button" id="previous-night" aria-label="Previous night">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="m10.414 12 4.95 4.95c.422.481.381 1.233-.207 1.573-.407.235-.868.139-1.207-.159l-5.657-5.657C8.114 12.503 8 12.278 8 12s.114-.503.293-.707l5.657-5.657c.204-.179.429-.293.707-.293.927 0 1.281 1.053.707 1.707Z"/></svg>
+        </button>
+        <button id="enter-night" class="enter-night">
+          <span id="selected-name">The waiting room</span>
+        </button>
+        <button class="arrow-button" id="next-night" aria-label="Next night">
+          <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="m13.586 12-4.95-4.95c-.574-.654-.22-1.707.707-1.707.278 0 .503.114.707.293l5.657 5.657c.179.204.293.429.293.707s-.114.503-.293.707l-5.657 5.657c-.339.298-.8.394-1.207.159-.588-.34-.629-1.092-.207-1.573Z"/></svg>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <section id="night-view" role="dialog" aria-modal="true" aria-labelledby="story-title" hidden>
+    <div class="story-scrim" aria-hidden="true"></div>
+    <div class="story-top">
+      <button id="return-button" class="back-button" aria-label="Back to the reflections">← Back</button>
+      <button id="story-next" class="back-button" aria-label="Next story">Next →</button>
+    </div>
+    <div class="story-bottom"><div class="story-heading"><div class="eyebrow" id="story-meta"></div><h2 id="story-title"></h2><span class="story-rule"></span></div><div class="story-prose"><p id="story-copy"></p></div></div>
+  </section>
+  <div id="ripple-ring" aria-hidden="true"></div>
+  <div id="loading">
+    <div class="loading-orb" aria-hidden="true"><img src="assets/loading-ball.webp" alt="" fetchpriority="high"></div>
+    <span id="loading-message" class="sr-only" role="status">Loading the mirror ball</span>
+  </div>
+  <p id="art-status" role="status" hidden></p>
+  <p class="sr-only" aria-live="polite" id="announcement"></p>
+
+  <noscript><div class="no-script">Turn on JavaScript to explore the reflections.<img src="assets/laundromat.jpg" alt="A warmly lit laundromat on a rainy street at night."></div></noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
